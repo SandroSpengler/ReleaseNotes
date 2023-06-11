@@ -15,24 +15,21 @@ public class ReleaseNote {
 
     private String title;
 
-    public Set<ReleaseSummary> getReleaseSummary() {
-        return releaseSummary;
-    }
-
-    public void setReleaseSummary(Set<ReleaseSummary> releaseSummary) {
-        this.releaseSummary = releaseSummary;
-    }
+    @OneToOne(mappedBy = "releaseNote")
+    private ReleaseSummary releaseSummary;
 
     @OneToMany(mappedBy = "releaseNote")
-    private Set<ReleaseSummary> releaseSummary;
+    private Set<UiChange> uiChange;
 
     public ReleaseNote() {
     }
 
-    public ReleaseNote(long releaseId, String releaseNoteVersion, String title) {
+    public ReleaseNote(long releaseId, String releaseNoteVersion, String title, ReleaseSummary releaseSummary, Set<UiChange> uiChange) {
         this.releaseId = releaseId;
         this.releaseNoteVersion = releaseNoteVersion;
         this.title = title;
+        this.releaseSummary = releaseSummary;
+        this.uiChange = uiChange;
     }
 
     public long getReleaseId() {
@@ -57,5 +54,21 @@ public class ReleaseNote {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public ReleaseSummary getReleaseSummary() {
+        return releaseSummary;
+    }
+
+    public void setReleaseSummary(ReleaseSummary releaseSummary) {
+        this.releaseSummary = releaseSummary;
+    }
+
+    public Set<UiChange> getUiChange() {
+        return uiChange;
+    }
+
+    public void setUiChange(Set<UiChange> uiChange) {
+        this.uiChange = uiChange;
     }
 }

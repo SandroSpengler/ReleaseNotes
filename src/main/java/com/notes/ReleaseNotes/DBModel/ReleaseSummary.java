@@ -20,7 +20,7 @@ public class ReleaseSummary {
         this.headline = headline;
     }
 
-    @ManyToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "release_id")
     @JsonIgnore
     private ReleaseNote releaseNote;
