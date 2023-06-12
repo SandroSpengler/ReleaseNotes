@@ -15,6 +15,7 @@ public class ReleaseNotesApplication {
         SpringApplication.run(ReleaseNotesApplication.class, args);
     }
 
+
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()

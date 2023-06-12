@@ -10,7 +10,32 @@ public class ReleaseSummary {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long summaryId;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "release_id")
+    @JsonIgnore
+    private ReleaseNote releaseNote;
+
     private String headline;
+
+    private String content;
+
+    public ReleaseSummary() {
+    }
+
+    public ReleaseSummary(long summaryId, String headline, String content, ReleaseNote releaseNote) {
+        this.summaryId = summaryId;
+        this.headline = headline;
+        this.content = content;
+        this.releaseNote = releaseNote;
+    }
+
+    public long getSummaryId() {
+        return summaryId;
+    }
+
+    public void setSummaryId(long summaryId) {
+        this.summaryId = summaryId;
+    }
 
     public String getHeadline() {
         return headline;
@@ -20,17 +45,12 @@ public class ReleaseSummary {
         this.headline = headline;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "release_id")
-    @JsonIgnore
-    private ReleaseNote releaseNote;
-
-    public long getSummaryId() {
-        return summaryId;
+    public String getContent() {
+        return content;
     }
 
-    public void setSummaryId(long summaryId) {
-        this.summaryId = summaryId;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public ReleaseNote getReleaseNote() {
