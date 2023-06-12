@@ -1,0 +1,19 @@
+server:
+  port: 5000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/local
+    username: '${postgres_username}'
+    password: '${postgres_password}'
+    name: 'local'
+  #    initialization-mode: always
+  #    initialize: true
+
+  jpa:
+    show-sql: True
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
